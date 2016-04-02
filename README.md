@@ -72,7 +72,6 @@ Pour le **type de marée** par exemple, créer un nouveau périphérique de type
 
 Renseigner les paramètres suivants :
 
-- Unité : ```pl.```
 - Type de données : ```Liste de valeurs```
 - URL de la requête : ```http://localhost/script/?exec=marees.php&port1=PERROS-GUIREC_TRESTRAOU&port2=66```
 - Chemin XPATH : ```/root/type_maree```
@@ -82,4 +81,4 @@ Exemple de mise en oeuvre :
 ![marees](marees.png "Marées")
 
 ---
-## Enjoy
+### Enjoy
