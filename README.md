@@ -56,11 +56,11 @@ Les différentes informations possibles retournées par les Xpath suivants :
 - ```hauteur_matin_BM``` : hauteur BM du matin. *Ex : 3.64*
 - ```maree_matin_PM``` : heure PM du matin. *Ex : 01h51*
 - ```hauteur_matin_PM``` : hauteur PM du matin. *Ex : 7.11*
-- ```coeff_apres_midi``` : idem pour l\'après-midi
-- ```maree_apres_midi_BM``` : idem pour l\'après-midi
-- ```hauteur_apres_midi_BM``` : idem pour l\'après-midi
-- ```maree_apres_midi_PM``` : idem pour l\'après-midi
-- ```hauteur_apres_midi_PM``` : idem pour l\'après-midi
+- ```coeff_apres_midi``` : idem pour l'après-midi
+- ```maree_apres_midi_BM``` : idem pour l'après-midi
+- ```hauteur_apres_midi_BM``` : idem pour l'après-midi
+- ```maree_apres_midi_PM``` : idem pour l'après-midi
+- ```hauteur_apres_midi_PM``` : idem pour l'après-midi
 - ```type_maree``` : type de marée. *0=Mortes Eaux (<70), 1=Vives Eaux (>70), 2=Grande Marée (>100)*
 - ```sens_maree``` : sens de marée. *-1=Descendante, 1=Montante*
 - ```date_grande_maree``` : date de la prochaine grande marée. *Ex : Vendredi 08 avril 2016*
