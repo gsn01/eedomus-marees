@@ -1,6 +1,6 @@
 <?php
 
-// Donnees sur les caracteristiques des marees, recuperees sur les sites horaire-maree.fr pour la maree du jour, maree.info pour les grandes marees, d'après les donnees du SHOM, non verifiees
+// Donnees sur les caracteristiques des marees, recuperees sur les sites horaire-maree.fr pour la maree du jour, maree.info pour les grandes marees, d'aprÃ¨s les donnees du SHOM, non verifiees
 // Produit par G. SIMON v1 mars 2016
 // Version 1.0
 // Voir la description des donnees produites en fin de script
@@ -49,8 +49,8 @@ function sdk_tri_tableau($tableau) {	// Tri d'un tableau algorithme "tri a bulle
 }
 
 // ---------------------Debut -------------------------------------------
-$port1 = getArg("port1"); // Ex : PERROS-GUIREC_TRESTRAOU, libelle a récuperer sur le site horaire-maree.fr apres choix du port dans la liste
-$port2 = getArg("port2"); // Ex : 66, a récuperer sur le site maree.info apres choix du port dans la liste
+$port1 = getArg("port1"); // Ex : PERROS-GUIREC_TRESTRAOU, libelle a rÃ©cuperer sur le site horaire-maree.fr apres choix du port dans la liste
+$port2 = getArg("port2"); // Ex : 66, a rÃ©cuperer sur le site maree.info apres choix du port dans la liste
 
 /**********************************************************************/
 /* Traiter la maree du jour (il y aussi celle des 10 prochains jours) */
@@ -97,13 +97,13 @@ if ($coeff_matin >= 100) { $type_maree = 2 /* Grande Maree */; }
 // Calcul du sens de maree : montante ou descendante
 // Algorithme : un peu tordu
 // 	Constitution d'un tableau ou l'heure courante est inseree
-//	On parcourt le tableau jusqu'à l'heure courante (reperee par un x)
+//	On parcourt le tableau jusqu'Ã  l'heure courante (reperee par un x)
 //	Et on compare par rapport au type de maree de l'element precedent
 $heure=date("H\hi");	// Heure courante au format xxhxx
 $tableau_trie = sdk_tri_tableau(array_merge($tableau_trie,array("x".$heure)));	// Ajout de l'heure courante au tableau, et tri
 
 for ($i=0 ; $i < count($tableau_trie); $i++) {	// Pour chaque ligne du tableau
-	if (substr($tableau_trie[$i],0,1) == "x")  break;	// Arrêt sur la ligne prefixee par x (heure courante)
+	if (substr($tableau_trie[$i],0,1) == "x")  break;	// ArrÃªt sur la ligne prefixee par x (heure courante)
 	}
 
 // On regarde l'element precedent (ou le suivant si l'heure courante est en premier)
@@ -126,7 +126,7 @@ $exploded1 = sdk_multiexplode(array('<li>','</li>'),$response_grande_maree); // 
 
 $tmp_coeff_max = 0;
 for ($i = 1; $i <= 10; $i=$i+2) { // Max de 10 lignes, on saute un vide a chaque fois
-//	echo "i=$i\nLigne unitaire à traiter : $exploded1[$i]\n";
+//	echo "i=$i\nLigne unitaire Ã  traiter : $exploded1[$i]\n";
 	$exploded2 = sdk_multiexplode(array('- coefficients ','- coefficient ','<a '), $exploded1[$i]);	//
 	if ( count($exploded2) == 1 ) break;	// Ne pas traiter si c'est une ligne sans coefficient (date ou autre)
 	$tmp_coeff_matin=substr($exploded2[1],0,3);	// 3 premiers caracteres
@@ -148,15 +148,19 @@ echo "<marees_txt>".$marees_txt."</marees_txt>";									// Description txt de l
 echo "<marees_chrono>".$marees_chrono."</marees_chrono>";							// Description txt de la maree du jour, classe chronologiquement. Ex : 
 echo "<coeff_matin>".$coeff_matin."</coeff_matin>";									// Coefficient de la Pleine Mer du matin
 echo "<maree_matin_BM>".$maree_matin_BM."</maree_matin_BM>";						// Heure de la Basse Mer du matin
+echo "<maree_matin_BM_num>".str_replace('h','',$maree_matin_BM)."</maree_matin_BM_num>";						// Heure de la Basse Mer du matin
 echo "<hauteur_matin_BM>".$hauteur_matin_BM."</hauteur_matin_BM>";					// ...
 echo "<maree_matin_PM>".$maree_matin_PM."</maree_matin_PM>";						// ...
+echo "<maree_matin_PM_num>".str_replace('h','',$maree_matin_PM)."</maree_matin_PM_num>";						// ...
 echo "<hauteur_matin_PM>".$hauteur_matin_PM."</hauteur_matin_PM>";					// ...
 echo "<coeff_apres_midi>".$coeff_apres_midi."</coeff_apres_midi>";					// ...
 echo "<maree_apres_midi_BM>".$maree_apres_midi_BM."</maree_apres_midi_BM>";			// ...
+echo "<maree_apres_midi_BM_num>".str_replace('h','',$maree_apres_midi_BM)."</maree_apres_midi_BM_num>";			// ...
 echo "<hauteur_apres_midi_BM>".$hauteur_apres_midi_BM."</hauteur_apres_midi_BM>";	// ...
 echo "<maree_apres_midi_PM>".$maree_apres_midi_PM."</maree_apres_midi_PM>";			// ...
+echo "<maree_apres_midi_PM_num>".str_replace('h','',$maree_apres_midi_PM)."</maree_apres_midi_PM_num>";			// ...
 echo "<hauteur_apres_midi_PM>".$hauteur_apres_midi_PM."</hauteur_apres_midi_PM>";	// ...
-echo "<type_maree>".$type_maree."</type_maree>";									// 0=Mortes Eaux (<70), 1=Vives Eaux (>70), 2=Grande Marée (>100)
+echo "<type_maree>".$type_maree."</type_maree>";									// 0=Mortes Eaux (<70), 1=Vives Eaux (>70), 2=Grande MarÃ©e (>100)
 echo "<sens_maree>".$sens_maree."</sens_maree>";									// -1=Descendante, 1=Montante
 echo "<date_grande_maree>".$date_grande_maree."</date_grande_maree>";				// Date de la prochaine grande maree (calcul base sur le cofficient du matin
 echo "<coeff_grande_maree>".$coeff_grande_maree."</coeff_grande_maree>";			// Et le coefficient du matin qui va avec
