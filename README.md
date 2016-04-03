@@ -30,13 +30,17 @@ Exemple de résultat
   <marees_chrono>42 +1h51 -8h23 +14h43 -21h08</marees_chrono>
   <coeff_matin>42</coeff_matin>
   <maree_matin_BM>08h23</maree_matin_BM>
+  <maree_matin_BM_num>0823</maree_matin_BM_num>
   <hauteur_matin_BM>3.64</hauteur_matin_BM>
   <maree_matin_PM>01h51</maree_matin_PM>
+  <maree_matin_PM_num>0151</maree_matin_PM_num>
   <hauteur_matin_PM>7.11</hauteur_matin_PM>
   <coeff_apres_midi>45</coeff_apres_midi>
   <maree_apres_midi_BM>21h08</maree_apres_midi_BM>
+  <maree_apres_midi_BM_num>2108</maree_apres_midi_BM_num>
   <hauteur_apres_midi_BM>3.69</hauteur_apres_midi_BM>
   <maree_apres_midi_PM>14h43</maree_apres_midi_PM>
+  <maree_apres_midi_PM_num>1443</maree_apres_midi_PM_num>
   <hauteur_apres_midi_PM>7.07</hauteur_apres_midi_PM>
   <type_maree>0</type_maree>
   <sens_maree>-1</sens_maree>
@@ -53,13 +57,17 @@ Les différentes informations possibles retournées par les Xpath suivants :
 - ```marees_chrono``` : idem mais classé par ordre chronologique (+ => PM, - => BM). *Ex : 42 +1h51 -8h23 +14h43 -21h08*
 - ```coeff_matin``` : coefficient du matin. *Ex : 42*
 - ```maree_matin_BM``` : heure BM du matin. *Ex : 08h23*
+- ```maree_matin_BM_num``` : heure BM du matin. *Ex : 0823*
 - ```hauteur_matin_BM``` : hauteur BM du matin. *Ex : 3.64*
 - ```maree_matin_PM``` : heure PM du matin. *Ex : 01h51*
+- ```maree_matin_PM_num``` : heure PM du matin. *Ex : 0151*
 - ```hauteur_matin_PM``` : hauteur PM du matin. *Ex : 7.11*
 - ```coeff_apres_midi``` : idem pour l'après-midi
 - ```maree_apres_midi_BM``` : idem pour l'après-midi
+- ```maree_apres_midi_BM_num``` : idem pour l'après-midi
 - ```hauteur_apres_midi_BM``` : idem pour l'après-midi
 - ```maree_apres_midi_PM``` : idem pour l'après-midi
+- ```maree_apres_midi_PM_num``` : idem pour l'après-midi
 - ```hauteur_apres_midi_PM``` : idem pour l'après-midi
 - ```type_maree``` : type de marée. *0=Mortes Eaux (<70), 1=Vives Eaux (>70), 2=Grande Marée (>100)*
 - ```sens_maree``` : sens de marée. *-1=Descendante, 1=Montante*
