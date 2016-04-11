@@ -22,6 +22,7 @@ Exemple :	http://192.168.1.2/script/?exec=marees.php&port1=PERROS-GUIREC_TRESTRA
 
 ## Résultat
 Le résultat est au format XML.
+Si l'un ou l'autre des paramètres est erroné, une erreur est renvoyée.
 
 Exemple de résultat
 ```xml
