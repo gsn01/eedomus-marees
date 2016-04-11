@@ -2,7 +2,8 @@
 
 // Donnees sur les caracteristiques des marees, recuperees sur les sites horaire-maree.fr pour la maree du jour, maree.info pour les grandes marees, d'après les donnees du SHOM, non verifiees
 // Produit par G. SIMON v1 mars 2016
-// Version 1.1
+// Version 1.2
+// 1.2 : ne pas renvoyer de valeurs vides quand une marée est manquante (par defaut "-")
 // 1.1 : ajout d'un test d'existence des ports demandes en parametres
 
 // Voir la description des donnees produites en fin de script
@@ -50,7 +51,15 @@ function sdk_tri_tableau($tableau) {	// Tri d'un tableau algorithme "tri a bulle
 	return $tableau;
 }
 
-// ---------------------Debut -------------------------------------------
+function sdk_non_vide($valeur,$defaut) { // Retourne la valeur par defaut si valeur vide
+	if ($valeur == "") $valeur = $defaut;
+	return $valeur;
+}
+
+// ----------------------------------------------------------
+// ---------------------Debut -------------------------------
+// ----------------------------------------------------------
+
 $port1 = getArg("port1"); // Ex : PERROS-GUIREC_TRESTRAOU, libelle a récuperer sur le site horaire-maree.fr apres choix du port dans la liste
 $port2 = getArg("port2"); // Ex : 66, a récuperer sur le site maree.info apres choix du port dans la liste
 
@@ -67,15 +76,15 @@ $exploded2 = sdk_multiexplode(array('<strong>','</strong>','<td class="blueoffic
 
 // Recuperation des differentes donnees dans la page lue
 $coeff_matin = $exploded2[18];
-$maree_matin_BM = $exploded2[21];
-$hauteur_matin_BM = sdk_format_hauteur($exploded2[22]);
-$maree_matin_PM = $exploded2[24];
-$hauteur_matin_PM = sdk_format_hauteur($exploded2[25]);
+$maree_matin_BM = sdk_non_vide($exploded2[21],"-");
+$hauteur_matin_BM = sdk_non_vide(sdk_format_hauteur($exploded2[22]),"-");
+$maree_matin_PM = sdk_non_vide($exploded2[24],"-");
+$hauteur_matin_PM = sdk_non_vide(sdk_format_hauteur($exploded2[25]),"-");
 $coeff_apres_midi = $exploded2[27];
-$maree_apres_midi_BM = $exploded2[29];
-$hauteur_apres_midi_BM = sdk_format_hauteur($exploded2[30]);
-$maree_apres_midi_PM = $exploded2[32];
-$hauteur_apres_midi_PM = sdk_format_hauteur($exploded2[33]);
+$maree_apres_midi_BM = sdk_non_vide($exploded2[29],"-");
+$hauteur_apres_midi_BM = sdk_non_vide(sdk_format_hauteur($exploded2[30]),"-");
+$maree_apres_midi_PM = sdk_non_vide($exploded2[32],"-");
+$hauteur_apres_midi_PM = sdk_non_vide(sdk_format_hauteur($exploded2[33]),"-");
 // echo $coeff_matin."\n".$maree_matin_BM."\n".$hauteur_matin_PM."\n".$maree_matin_PM."\n".$coeff_apres_midi."\n".$maree_apres_midi_BM."\n".$maree_apres_midi_PM."\n";
 
 // Forme affichable, pas calculable, BMs en premier, puis PMs
