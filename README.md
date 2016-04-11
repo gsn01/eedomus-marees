@@ -15,8 +15,8 @@ Ce script peut ensuite être testé au travers du lien suivant dans le navigateu
 
 où il faut remplacer
 - *[ip_de_votre_box]* par l'IP de votre Box *eedomus*
-- *xx1* par le nom du port à récuperer sur le site [horaire-maree.fr](http://horaire-maree.fr) après choix du port dans la liste
-- *xx2* par le numéro du port à récuperer sur le site [maree.info](http://maree.info) après choix du port dans la liste
+- *xx1* par le nom du port à récuperer dans l'url sur le site [horaire-maree.fr](http://horaire-maree.fr) après choix du port dans la liste
+- *xx2* par le numéro du port à récuperer dans l'url sur le site [maree.info](http://maree.info) après choix du port dans la liste
 
 Exemple :	http://192.168.1.2/script/?exec=marees.php&port1=PERROS-GUIREC_TRESTRAOU&port2=66
 
@@ -49,6 +49,7 @@ Exemple de résultat
   <coeff_grande_maree>117 / 118</coeff_grande_maree>
   </root>
 ```
+**Note** : s'il n'y a que 3 basses mers ou pleines mers dans la journée, les valeurs de la marée manquante sont à "-".
 
 ## Correspondance XPATH
 
