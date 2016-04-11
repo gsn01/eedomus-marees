@@ -2,7 +2,9 @@
 
 // Donnees sur les caracteristiques des marees, recuperees sur les sites horaire-maree.fr pour la maree du jour, maree.info pour les grandes marees, d'après les donnees du SHOM, non verifiees
 // Produit par G. SIMON v1 mars 2016
-// Version 1.0
+// Version 1.1
+// 1.1 : ajout d'un test d'existence des ports demandes en parametres
+
 // Voir la description des donnees produites en fin de script
 
 // Fonctions
@@ -114,6 +116,12 @@ if ( $i <> 0 ) {
 	if (substr($tableau_trie[1],0,1) == "+") $sens_maree = "1"; else $sens_maree = "-1";
 	};
 
+// Test du résultat 1
+// Si le port passe en parametre n'existe pas, le resultat n'inclut pas de hauteurs, ni horaires
+if ($maree_matin_BM == "" and $maree_matin_PM == "" and $maree_apres_midi_BM == "" and $maree_apres_midi_PM == "") {
+	echo "<erreur>Le port $port1 n'existe pas sur horaires-marees.fr</erreur>";
+	die();
+	}
 
 /**********************************************************************/
 /* Prochains coefficients de vives-eaux => pour trouver la prochaine grande maree dans le tableau recupere */
@@ -134,6 +142,13 @@ for ($i = 1; $i <= 10; $i=$i+2) { // Max de 10 lignes, on saute un vide a chaque
 	}
 $date_grande_maree = trim($exploded2_precedent[0]);
 $coeff_grande_maree = trim($exploded2_precedent[1]);
+
+// Test du résultat 2
+// Si le port passe en parametre n'existe pas, le resultat n'inclut pas d'informations
+if ($date_grande_maree == "") {
+	echo "<erreur>Le port $port2 n'existe pas dans la base maree.info</erreur>";
+	die();
+	}
 
 
 /**********************************************************************/
